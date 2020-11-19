@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:url_launcher/url_launcher.dart';
+import 'package:credenstore/components/tappable_card.dart';
 
 void main() => runApp(Credenstore());
 
@@ -7,7 +8,7 @@ class Credenstore extends StatelessWidget {
   // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
-    return new App();
+    return App();
   }
 }
 
@@ -82,20 +83,18 @@ class _AppState extends State<App> {
         appBar: AppBar(
           title: Row(children: <Widget>[
             Padding(
-              padding: EdgeInsets.only(right: 10),
-              child: Image(
-                image: NetworkImage(
-                    "https://credenstore.web.app/img/logo.e1bdf621.png"),
-                height: 25,
-              ),
-            ),
+                padding: EdgeInsets.only(right: 10),
+                child: Image(
+                  image: AssetImage("assets/images/logo.png"),
+                  height: 25,
+                )),
             Text("Credenstore"),
           ]),
           actions: <Widget>[
             Tooltip(
               message: "Buy me a coffee",
               child: IconButton(
-                icon: Icon(Icons.payment),
+                icon: Icon(Icons.payments),
                 color: Colors.white,
                 onPressed:
                     _launchPaypal, // This trailing comma makes auto-formatting nicer for build methods.
@@ -116,9 +115,11 @@ class _AppState extends State<App> {
           child: Column(
             mainAxisAlignment: MainAxisAlignment.center,
             children: <Widget>[
-              Text(
-                'Welcome to credenstore',
+              TappableCard(title: "Store", icon: Icons.lock),
+              Padding(
+                padding: EdgeInsets.only(top: 30),
               ),
+              TappableCard(title: "Retrieve", icon: Icons.vpn_key)
             ],
           ),
         ),
